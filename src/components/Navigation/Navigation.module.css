@@ -1,0 +1,14 @@
+.navigation {
+    text-decoration: none;
+    background-color: rgba(192, 192, 192, 0.31);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+li {
+    list-style-type: none
+}
+
+.link {
+    text-decoration: none;
+}

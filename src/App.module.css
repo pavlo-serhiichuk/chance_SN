@@ -1,0 +1,20 @@
+.wrapper {
+    margin: 0 auto;
+}
+.wrapperContent {
+    width: 500px;
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    grid-gap: 10px;
+    text-decoration: none;
+    margin: 0 auto;
+}
+
+.routers {
+    text-decoration: none;
+    background-color: rgba(192, 192, 192, 0.31);
+    border-radius: 5px;
+    margin-top: 10px;
+
+}

@@ -1,0 +1,36 @@
+.profileInfo {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.info {
+    background-color: #fff;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.avatar {
+    height: 80px;
+    /*border: 1px solid silver;*/
+    padding: 5px;
+    background-color: lightblue;
+}
+
+.myPosts {
+    padding: 5px;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.postContent {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 5px;
+    border-bottom: 1px solid silver;
+}

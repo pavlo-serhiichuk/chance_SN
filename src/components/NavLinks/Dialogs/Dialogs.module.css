@@ -1,0 +1,13 @@
+.dialogContent {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+.dialogContainer {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
