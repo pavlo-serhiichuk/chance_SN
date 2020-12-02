@@ -1,18 +1,30 @@
 import React from 'react'
 import s from './MyProfile.module.css'
-import SendInfo from "../../common/SendInfo";
-import ProfileInfo from "./ProfileInfo";
-
-const posts = [
-    {message: 'Glad to see everyone', likes: 0},
-    {message: 'Glad to see everyone', likes: 3},
-    {message: 'Glad to see everyone', likes: 5},
-]
 
 const MyPosts = props => {
+    // debugger
+    const newPostElement = React.createRef()
+    const onAddPost = () => {
+        let text = newPostElement.current.value
+            props.addPost(text)
+        props.updatePostText('')
+
+    }
+
+    const onPostChange = () => {
+        let text = newPostElement.current.value
+        props.updatePostText(text)
+    }
+
     return (
         <div className={s.myPosts}>
-            <SendInfo/>
+            <div className={s.sendInfo}>
+                <input type="text"
+                       value={props.postText}
+                       ref={newPostElement}
+                       onChange={onPostChange}/>
+                <button onClick={onAddPost}>Add Post</button>
+            </div>
             <Post posts={props.posts}/>
         </div>
     )
@@ -21,9 +33,9 @@ const MyPosts = props => {
 const Post = props => {
     return (
         <ul>{props.posts.map(post => {
-            return <li className={s.postContent}>
+            return <li className={s.postContent} key={post.id}>
                 <span>{post.message}</span>
-                <button>{post.likes}</button>
+                <button >{post.likes}</button>
             </li>
         })}</ul>
     )

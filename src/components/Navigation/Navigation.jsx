@@ -12,7 +12,7 @@ const Navigation = () => {
                 <NavLink to={'/myFriends'} className={s.link}>Friends</NavLink>
             </li>
             <li>
-                <NavLink to={'/dialog'} className={s.link}>Dialogs</NavLink>
+                <NavLink to={'/dialogs'} className={s.link}>Dialogs</NavLink>
             </li>
         </ul>
     )

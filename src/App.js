@@ -5,20 +5,19 @@ import Navigation from "./components/Navigation/Navigation";
 import {Route} from "react-router-dom";
 import MyProfile from "./components/NavLinks/MyProfile/MyProfile";
 import MyFriend from "./components/NavLinks/MyFriends/MyFriends";
-import Dialog from "./components/NavLinks/Dialogs/Dialogs";
+import Dialogs from "./components/NavLinks/Dialogs/Dialogs";
 
 
 function App(props) {
     return (
         <div className={s.wrapper}>
-            {'some wordsssd'}
             <Header/>
             <div className={s.wrapperContent}>
                 <Navigation/>
                 <div className={s.routers}>
-                    <Route path='/profile' render={() => <MyProfile profileInfo={props.state.profileInfo}/> }/>
+                    <Route path='/profile' render={() => <MyProfile profileInfo={props.state.profileInfo} addPost={props.addPost} updatePostText={props.updatePostText}/> }/>
                     <Route path='/myFriends' render={() => <MyFriend/>}/>
-                    <Route path='/dialog' render={() => <Dialog dialogInfo={props.state.dialogInfo}/>}/>
+                    <Route path='/dialogs' render={() => <Dialogs dialogInfo={props.state.dialogInfo} addMessage={props.addMessage} updateDialogMessage={props.updateDialogMessage}/>}/>
                 </div>
             </div>
         </div>

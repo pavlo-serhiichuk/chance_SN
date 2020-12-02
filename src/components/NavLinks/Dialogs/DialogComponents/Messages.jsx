@@ -2,8 +2,8 @@ import React from 'react'
 
 const Messages = props => {
     return <div>
-        {props.messages.map(message => {
-            return <div>{message}</div>
+        {props.messages.map(m => {
+            return <div key={m.id}>{m.message}</div>
         })}
     </div>
 }

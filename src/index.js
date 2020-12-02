@@ -3,38 +3,25 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import state, {addPost, addMessage, updatePostText, updateDialogMessage} from './redux/state'
 
-const state = {
-  profileInfo: {
-    posts: [
-      {message: 'Glad to see everyone', likes: 0},
-      {message: 'Glad to see everyone', likes: 3},
-      {message: 'Glad to see everyone', likes: 5},
-    ]
-  },
-  dialogInfo: {
-    users: [
-      {id: 1, name: 'Elena'},
-      {id: 2, name: 'Igor'},
-      {id: 3, name: 'Paul'}
-    ],
-    messages: [
-      "Hello",
-      "How are you?",
-      "I'm excellent",
-    ]
-  },
-}
-
-ReactDOM.render(
+const rerender = () => {
+    return ReactDOM.render(
     <BrowserRouter>
       <React.StrictMode>
-        <App state={state}/>
+        <App state={state}
+             addPost={addPost}
+             updatePostText={updatePostText}
+             addMessage={addMessage} updateDialogMessage={updateDialogMessage}/>
       </React.StrictMode>
     </BrowserRouter>
     ,
     document.getElementById('root')
-);
+);}
+
+rerender()
+
+export default rerender
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
