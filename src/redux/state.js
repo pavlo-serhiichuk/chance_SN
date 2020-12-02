@@ -1,4 +1,8 @@
-import rerender from "../index";
+// import rerender from "../index";
+
+let rerender = () => {
+    console.log('rerender')
+}
 
 const state = {
     profileInfo: {
@@ -48,6 +52,10 @@ export const addPost = () => {
 export const addMessage = () => {
     state.dialogInfo.messages.push({id: 4, message: state.dialogInfo.messageText})
     rerender()
+}
+
+export const subscribe = (observer) => {
+    rerender = observer
 }
 
 export default state

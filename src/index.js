@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-import state, {addPost, addMessage, updatePostText, updateDialogMessage} from './redux/state'
+import state, {addPost, addMessage, updatePostText, updateDialogMessage, subscribe} from './redux/state'
 
 const rerender = () => {
     return ReactDOM.render(
@@ -20,6 +20,8 @@ const rerender = () => {
 );}
 
 rerender()
+
+subscribe(rerender)
 
 export default rerender
 // If you want to start measuring performance in your app, pass a function
