@@ -1,11 +1,28 @@
-.header {
+.headerContainer {
+    margin: 0;
     position: fixed;
-    height: 30px;
+    height: 35px;
     width: 100%;
-    padding: 10px 80px;
+    padding-top: 10px;
     background-color: powderblue;
+    opacity: 0.9;
+
+}
+.headerContent {
+    margin: 0 auto;
+    width: 500px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 50px;
+    grid-template-columns: 2fr 5fr;
+    /*grid-gap: 50px;*/
 }
 
+.logo {
+font-family: sans-serif;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row-reverse;
+    font-family: sans-serif;
+
+}
