@@ -13,7 +13,6 @@ const rerender = (state) => {
       <React.StrictMode>
         <App state={store.getState()}
              dispatch={store.dispatch.bind(store)}
-
              addPostAC={addPostAC}
              updateMessageAC={updateMessageAC}
              sendMessageAC={sendMessageAC}
