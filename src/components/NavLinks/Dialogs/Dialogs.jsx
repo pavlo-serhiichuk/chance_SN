@@ -8,10 +8,11 @@ const Dialogs = (props) => {
     const newMessageText = React.createRef()
 
     const onAddMessage = () => {
-        props.addMessage()
+        props.sendMessageAC()
+        props.updateDialogMessageAC('')
     }
     const onMessageChange = () => {
-        props.updateDialogMessage(newMessageText.current.value)
+        props.updateDialogMessageAC(newMessageText.current.value)
     }
 
     return (

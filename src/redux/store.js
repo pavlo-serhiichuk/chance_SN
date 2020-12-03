@@ -1,3 +1,7 @@
+const ADD_POST = 'ADD_POST'
+const UPDATE_POST_TEXT = 'UPDATE_POST_TEXT'
+const SEND_MESSAGE = 'SEND_MESSAGE'
+const UPDATE_DIALOG_MESSAGE = 'UPDATE_MESSAGE_TEXT'
 
 let rerender = () => {
     console.log('rerender')
@@ -26,9 +30,9 @@ const store = {
                 {id: 3, name: 'Paul'}
             ],
             messages: [
-                { id: 1, message:"Hello"},
-                { id: 2, message:"How are you?"},
-                { id: 3, message:"I'm excellent"},
+                {id: 1, message: "Hello"},
+                {id: 2, message: "How are you?"},
+                {id: 3, message: "I'm excellent"},
             ],
             messageText: 'gord soboy'
         },
@@ -51,7 +55,7 @@ const store = {
 
     },
     addMessage() {
-        this._state.dialogInfo.messages.push({id: 4, message: store.dialogInfo.messageText})
+        this._state.dialogInfo.messages.push({id: 4, message: this._state.dialogInfo.messageText})
         this._rerender(this._state)
 
     },
@@ -60,7 +64,36 @@ const store = {
         this._rerender(this._state)
 
     },
+    dispatch(action) {
+        switch (action.type) {
+            case ADD_POST:
+                let newPost = {
+                    id: 5,
+                    likes: 0,
+                    message: this._state.profileInfo.postText
+                }
+                this._state.profileInfo.posts.unshift(newPost)
+                this._rerender(this._state);
+
+            case UPDATE_POST_TEXT:
+                this._state.profileInfo.postText = action.newPostText
+                this._rerender(this._state);
+            case SEND_MESSAGE:
+                this._state.dialogInfo.messages.push({id: 4, message: this._state.dialogInfo.messageText})
+                this._rerender(this._state)
+            case UPDATE_DIALOG_MESSAGE:
+                this._state.dialogInfo.messageText = action.newMessageText
+                this._rerender(this._state)
+            default:
+                return this._state
+        }
+    }
 }
+
+export const addPostAC = () => (store.dispatch({type: ADD_POST}))
+export const updateMessageAC = (newPostText) => (store.dispatch({type: UPDATE_POST_TEXT, newPostText}))
+export const sendMessageAC = () => (store.dispatch({type: SEND_MESSAGE}))
+export const updateDialogMessageAC = (newMessageText) => (store.dispatch({type: UPDATE_DIALOG_MESSAGE, newMessageText}))
 
 // const store = {
 //     profileInfo: {

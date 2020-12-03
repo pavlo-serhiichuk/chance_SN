@@ -15,9 +15,13 @@ function App(props) {
             <div className={s.wrapperContent}>
                 <Navigation/>
                 <div className={s.routers}>
-                    <Route path='/profile' render={() => <MyProfile profileInfo={props.state.profileInfo} addPost={props.addPost} updatePostText={props.updatePostText}/> }/>
+                    <Route path='/profile' render={() => <MyProfile profileInfo={props.state.profileInfo}
+                                                                     addPostAC={props.addPostAC}
+                                                                    updateMessageAC={props.updateMessageAC}/> }/>
                     <Route path='/myFriends' render={() => <MyFriend/>}/>
-                    <Route path='/dialogs' render={() => <Dialogs dialogInfo={props.state.dialogInfo} addMessage={props.addMessage} updateDialogMessage={props.updateDialogMessage}/>}/>
+                    <Route path='/dialogs' render={() => <Dialogs dialogInfo={props.state.dialogInfo}
+                                                                  sendMessageAC={props.sendMessageAC}
+                                                                  updateDialogMessageAC={props.updateDialogMessageAC}/>}/>
                 </div>
             </div>
         </div>
