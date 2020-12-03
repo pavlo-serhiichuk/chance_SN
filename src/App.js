@@ -15,15 +15,11 @@ function App(props) {
             <div className={s.wrapperContent}>
                 <Navigation/>
                 <div className={s.routers}>
-                    <Route path='/profile' render={() => <MyProfile profileInfo={props.state.profileInfo}
-                                                                    dispatch={props.dispatch}
-                                                                    addPostAC={props.addPostAC}
-                                                                    updateMessageAC={props.updateMessageAC}/> }/>
+                    <Route path='/profile' render={() => <MyProfile state={props.state}
+                                                                    dispatch={props.dispatch}/> }/>
                     <Route path='/myFriends' render={() => <MyFriend/>}/>
-                    <Route path='/dialogs' render={() => <Dialogs dialogInfo={props.state.dialogInfo}
-                                                                  dispatch={props.dispatch}
-                                                                  sendMessageAC={props.sendMessageAC}
-                                                                  updateDialogMessageAC={props.updateDialogMessageAC}/>}/>
+                    <Route path='/dialogs' render={() => <Dialogs state={props.state}
+                                                                  dispatch={props.dispatch}/>}/>
                 </div>
             </div>
         </div>

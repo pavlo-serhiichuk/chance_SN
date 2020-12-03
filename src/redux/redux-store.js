@@ -1,13 +1,13 @@
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import profileReducer from "./profile-reducer";
 import dialogReducer from "./dialog-reducer";
 
 const reducers = combineReducers({
-    profileReducer: profileReducer,
-    dialogReducer: dialogReducer,
+    profilePage: profileReducer,
+    dialogPage: dialogReducer,
 
 })
 
-const store = createStore(reducers)
+const store = createStore(reducers, {}, applyMiddleware())
 
 export default store

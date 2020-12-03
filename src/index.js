@@ -3,21 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-import store from './redux/store'
-import {addPostAC, updateMessageAC} from "./redux/profile-reducer";
-import {sendMessageAC, updateDialogMessageAC} from "./redux/dialog-reducer";
+import store from './redux/redux-store'
 
 const rerender = (state) => {
     return ReactDOM.render(
     <BrowserRouter>
       <React.StrictMode>
-        <App state={store.getState()}
-             dispatch={store.dispatch.bind(store)}
-             addPostAC={addPostAC}
-             updateMessageAC={updateMessageAC}
-             sendMessageAC={sendMessageAC}
-             updateDialogMessageAC={updateDialogMessageAC}
-        />
+        <App
+            state={state}
+             store={store}
+             dispatch={store.dispatch.bind(store)}/>
       </React.StrictMode>
     </BrowserRouter>
     ,
@@ -26,9 +21,10 @@ const rerender = (state) => {
 
 rerender(store.getState())
 
-store.subscribe(rerender)
+store.subscribe(() =>  {
+    rerender(store.getState())
+})
 
-export default rerender
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

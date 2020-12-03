@@ -5,9 +5,9 @@ import {sendMessageAC, updateDialogMessageAC} from "../../../redux/dialog-reduce
 
 
 const Dialogs = (props) => {
-    const messageText = props.dialogInfo.messageText
-    const users = props.dialogInfo.users
-    const messages = props.dialogInfo.messages
+    const messageText = props.state.dialogPage.messageText
+    const users = props.state.dialogPage.users
+    const messages = props.state.dialogPage.messages
     const allMessages = messages.map(m => {
             return <div key={m.id}>{m.message}</div>
         })

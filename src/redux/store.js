@@ -9,7 +9,7 @@ const store = {
         console.log('rerender')
     },
     _state: {
-        profileInfo: {
+        profilePage: {
             posts: [
                 {id: 1, message: 'Glad to see everyone', likes: 0},
                 {id: 2, message: 'Glad to see you', likes: 3},
@@ -17,7 +17,7 @@ const store = {
             ],
             postText: 'sd',
         },
-        dialogInfo: {
+        dialogPage:  {
             users: [
                 {id: 1, name: 'Elena'},
                 {id: 2, name: 'Igor'},
