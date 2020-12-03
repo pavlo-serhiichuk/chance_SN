@@ -16,10 +16,12 @@ function App(props) {
                 <Navigation/>
                 <div className={s.routers}>
                     <Route path='/profile' render={() => <MyProfile profileInfo={props.state.profileInfo}
-                                                                     addPostAC={props.addPostAC}
+                                                                    dispatch={props.dispatch}
+                                                                    addPostAC={props.addPostAC}
                                                                     updateMessageAC={props.updateMessageAC}/> }/>
                     <Route path='/myFriends' render={() => <MyFriend/>}/>
                     <Route path='/dialogs' render={() => <Dialogs dialogInfo={props.state.dialogInfo}
+                                                                  dispatch={props.dispatch}
                                                                   sendMessageAC={props.sendMessageAC}
                                                                   updateDialogMessageAC={props.updateDialogMessageAC}/>}/>
                 </div>

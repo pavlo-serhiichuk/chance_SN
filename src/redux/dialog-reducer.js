@@ -1,4 +1,3 @@
-import store from "./store";
 
 const SEND_MESSAGE = 'SEND_MESSAGE'
 const UPDATE_DIALOG_MESSAGE = 'UPDATE_MESSAGE_TEXT'
@@ -6,7 +5,8 @@ const UPDATE_DIALOG_MESSAGE = 'UPDATE_MESSAGE_TEXT'
 const dialogReducer = (state, action) => {
         switch (action.type) {
             case SEND_MESSAGE:
-                state.messages.push({id: 4, message: state.messageText})
+                state.messages.push({id: Math.random(), message: state.messageText})
+                state.messageText = ''
                 return state
             case UPDATE_DIALOG_MESSAGE:
                 state.messageText = action.newMessageText
@@ -20,7 +20,7 @@ const dialogReducer = (state, action) => {
 }
 
 
-export const sendMessageAC = () => (store.dispatch({type: SEND_MESSAGE}))
-export const updateDialogMessageAC = (newMessageText) => (store.dispatch({type: UPDATE_DIALOG_MESSAGE, newMessageText}))
+export const sendMessageAC = () => ({type: SEND_MESSAGE})
+export const updateDialogMessageAC = (newMessageText) => ({type: UPDATE_DIALOG_MESSAGE, newMessageText})
 
 export default dialogReducer

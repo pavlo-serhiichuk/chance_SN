@@ -1,34 +1,37 @@
 import React from 'react'
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogComponents/DialogItem";
-import Messages from "./DialogComponents/Messages";
+import {sendMessageAC, updateDialogMessageAC} from "../../../redux/dialog-reducer";
 
 
 const Dialogs = (props) => {
-    const newMessageText = React.createRef()
+    const messageText = props.dialogInfo.messageText
+    const users = props.dialogInfo.users
+    const messages = props.dialogInfo.messages
+    const allMessages = messages.map(m => {
+            return <div key={m.id}>{m.message}</div>
+        })
 
     const onAddMessage = () => {
-        debugger
-        props.sendMessageAC()
-        props.updateDialogMessageAC('')
+        props.dispatch(sendMessageAC())
+        props.dispatch(updateDialogMessageAC(''))
     }
-    const onMessageChange = () => {
-        props.updateDialogMessageAC(newMessageText.current.value)
+    const onMessageChange = (e) => {
+        props.dispatch(updateDialogMessageAC(e.target.value))
     }
 
     return (
         <div className={s.dialogContainer}>
             <div>
-                <DialogItem users={props.dialogInfo.users}/>
+                <DialogItem users={users}/>
             </div>
             <div>
                 <div>
                     <input onChange={onMessageChange} type="text"
-                           ref={newMessageText}
-                           value={props.dialogInfo.newMessageText}/>
-                    <button onClick={onAddMessage}>Send</button>
+                           value={messageText}/>
+                    <button onClick={onAddMessage} disabled={messageText ? false: true}>Send</button>
                 </div>
-                <Messages messages={props.dialogInfo.messages}/>
+                <div>{allMessages}</div>
             </div>
         </div>
     )
