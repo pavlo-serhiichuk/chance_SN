@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD_POST'
-const UPDATE_POST_TEXT = 'UPDATE_POST_TEXT'
-const SEND_MESSAGE = 'SEND_MESSAGE'
-const UPDATE_DIALOG_MESSAGE = 'UPDATE_MESSAGE_TEXT'
+import dialogReducer from "./dialog-reducer";
+import profileReducer from "./profile-reducer";
 
 const store = {
     subscribe(observer) {
@@ -17,7 +15,7 @@ const store = {
                 {id: 2, message: 'Glad to see you', likes: 3},
                 {id: 3, message: 'Glad to see everyone', likes: 5},
             ],
-            postText: 'gord soboy',
+            postText: 'sd',
         },
         dialogInfo: {
             users: [
@@ -38,35 +36,14 @@ const store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
-                let newPost = {
-                    id: 5,
-                    likes: 0,
-                    message: this._state.profileInfo.postText
-                }
-                this._state.profileInfo.posts.unshift(newPost)
-                this._rerender(this._state);
 
-            case UPDATE_POST_TEXT:
-                this._state.profileInfo.postText = action.newPostText
-                this._rerender(this._state);
-            case SEND_MESSAGE:
-                this._state.dialogInfo.messages.push({id: 4, message: this._state.dialogInfo.messageText})
-                this._rerender(this._state)
-            case UPDATE_DIALOG_MESSAGE:
-                this._state.dialogInfo.messageText = action.newMessageText
-                this._rerender(this._state)
-            default:
-                return this._state
+            this._state.profileInfo = profileReducer(this._state.profileInfo, action );
+            this._state.dialogInfo = dialogReducer(this._state.dialogInfo, action );
+
+            this._rerender(this._state);
         }
-    }
 }
 
-export const addPostAC = () => (store.dispatch({type: ADD_POST}))
-export const updateMessageAC = (newPostText) => (store.dispatch({type: UPDATE_POST_TEXT, newPostText}))
-export const sendMessageAC = () => (store.dispatch({type: SEND_MESSAGE}))
-export const updateDialogMessageAC = (newMessageText) => (store.dispatch({type: UPDATE_DIALOG_MESSAGE, newMessageText}))
 
 export default store
 

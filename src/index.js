@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-import store, {addPostAC, updateMessageAC, sendMessageAC, updateDialogMessageAC} from './redux/store'
+import store from './redux/store'
+import {addPostAC, updateMessageAC} from "./redux/profile-reducer";
+import {sendMessageAC, updateDialogMessageAC} from "./redux/dialog-reducer";
 
 const rerender = (state) => {
     return ReactDOM.render(
     <BrowserRouter>
       <React.StrictMode>
-        <App state={state}
+        <App state={store.getState()}
+             dispatch={store.dispatch.bind(store)}
+
              addPostAC={addPostAC}
              updateMessageAC={updateMessageAC}
              sendMessageAC={sendMessageAC}
