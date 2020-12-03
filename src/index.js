@@ -10,10 +10,10 @@ const rerender = (state) => {
     <BrowserRouter>
       <React.StrictMode>
         <App state={state}
-             addPostAC={addPostAC.bind(store)}
-             updateMessageAC={updateMessageAC.bind(store)}
-             sendMessageAC={sendMessageAC.bind(store)}
-             updateDialogMessageAC={updateDialogMessageAC.bind(store)}
+             addPostAC={addPostAC}
+             updateMessageAC={updateMessageAC}
+             sendMessageAC={sendMessageAC}
+             updateDialogMessageAC={updateDialogMessageAC}
         />
       </React.StrictMode>
     </BrowserRouter>

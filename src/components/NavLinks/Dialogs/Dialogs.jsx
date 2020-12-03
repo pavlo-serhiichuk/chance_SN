@@ -8,6 +8,7 @@ const Dialogs = (props) => {
     const newMessageText = React.createRef()
 
     const onAddMessage = () => {
+        debugger
         props.sendMessageAC()
         props.updateDialogMessageAC('')
     }
@@ -22,7 +23,9 @@ const Dialogs = (props) => {
             </div>
             <div>
                 <div>
-                    <input onChange={onMessageChange} type="text" ref={newMessageText} value={props.dialogInfo.newMessageText}/>
+                    <input onChange={onMessageChange} type="text"
+                           ref={newMessageText}
+                           value={props.dialogInfo.newMessageText}/>
                     <button onClick={onAddMessage}>Send</button>
                 </div>
                 <Messages messages={props.dialogInfo.messages}/>
