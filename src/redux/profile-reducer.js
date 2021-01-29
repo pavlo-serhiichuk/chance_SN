@@ -34,6 +34,6 @@ const initialState = {
 }
 
 export const addPostAC = () => (({type: ADD_POST}))
-export const updateMessageAC = (newPostText) => (({type: UPDATE_POST_TEXT, newPostText}))
+export const updatePostMessageAC = (newPostText) => (({type: UPDATE_POST_TEXT, newPostText}))
 
 export default profileReducer

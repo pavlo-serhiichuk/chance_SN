@@ -1,17 +1,15 @@
 import React from 'react'
 import s from './MyProfile.module.css'
-import {addPostAC, updateMessageAC} from "../../../redux/profile-reducer";
 
 const MyPosts = props => {
     // debugger
     const onAddPost = () => {
-            props.dispatch(addPostAC())
-        props.dispatch(updateMessageAC(''))
+        props.addPost()
 
     }
 
     const onPostChange = (e) => {
-        props.dispatch(updateMessageAC(e.target.value))
+        props.updatePostMessage(e.target.value)
     }
 
     return (
@@ -21,7 +19,7 @@ const MyPosts = props => {
                        value={props.postText}
                        onChange={onPostChange}/>
                 <button onClick={onAddPost}
-                        disabled={props.postText ? false: true}>Add Post</button>
+                        disabled={props.postText ? false: true}>{'+'}</button>
             </div>
             <Post posts={props.posts}/>
         </div>
