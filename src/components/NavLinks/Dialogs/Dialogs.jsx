@@ -1,23 +1,21 @@
 import React from 'react'
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogComponents/DialogItem";
-import {sendMessageAC, updateDialogMessageAC} from "../../../redux/dialog-reducer";
 
 
 const Dialogs = (props) => {
-    const messageText = props.state.dialogPage.messageText
-    const users = props.state.dialogPage.users
-    const messages = props.state.dialogPage.messages
+    const messageText = props.state.messageText
+    const users = props.state.users
+    const messages = props.state.messages
     const allMessages = messages.map(m => {
             return <div key={m.id}>{m.message}</div>
         })
 
     const onAddMessage = () => {
-        props.dispatch(sendMessageAC())
-        props.dispatch(updateDialogMessageAC(''))
+        props.addMessage()
     }
     const onMessageChange = (e) => {
-        props.dispatch(updateDialogMessageAC(e.target.value))
+        props.messageChange(e.target.value)
     }
 
     return (

@@ -11,7 +11,6 @@ const MyPosts = props => {
     const onPostChange = (e) => {
         props.updatePostMessage(e.target.value)
     }
-
     return (
         <div className={s.myPosts}>
             <div className={s.sendInfo}>

@@ -1,23 +1,27 @@
 import React from 'react'
 import {addPostAC, updatePostMessageAC} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
+import StoreContext from "../../../Provider";
 
-const MyPostsContainer = props => {
-    const addPost = () => {
-        props.dispatch(addPostAC())
-        props.dispatch(updatePostMessageAC(''))
-
-    }
-
-    const updatePostMessage = (text) => {
-        props.dispatch(updatePostMessageAC(text))
-    }
-
+const MyPostsContainer = () => {
     return (
-        <MyPosts posts={props.posts}
-                 postText={props.postText}
-                 updatePostMessage={updatePostMessage}
-                 addPost={addPost}/>
+        <StoreContext.Consumer>
+            {store => {
+                let state = store.getState().profilePage
+                const addPost = () => {
+                    store.dispatch(addPostAC())
+                    store.dispatch(updatePostMessageAC(''))}
+
+                const updatePostMessage = (text) => {
+                    store.dispatch(updatePostMessageAC(text))}
+
+                return <MyPosts posts={state.posts}
+                                postText={state.postText}
+                                updatePostMessage={updatePostMessage}
+                                addPost={addPost}/>
+            }
+            }
+        </StoreContext.Consumer>
     )
 }
 

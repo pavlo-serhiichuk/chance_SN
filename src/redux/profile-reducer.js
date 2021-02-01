@@ -29,8 +29,6 @@ const initialState = {
             default:
                 return state
         }
-
-    return state
 }
 
 export const addPostAC = () => (({type: ADD_POST}))
