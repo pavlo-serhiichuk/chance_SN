@@ -1,4 +1,4 @@
-import dialogReducer from "./dialog-reducer";
+import dialogsReducer from "./dialog-reducer";
 import profileReducer from "./profile-reducer";
 
 const store = {
@@ -17,7 +17,7 @@ const store = {
             ],
             postText: 'sd',
         },
-        dialogPage:  {
+        dialogsPage:  {
             users: [
                 {id: 1, name: 'Elena'},
                 {id: 2, name: 'Igor'},
@@ -38,7 +38,7 @@ const store = {
     dispatch(action) {
 
             this._state.profileInfo = profileReducer(this._state.profileInfo, action );
-            this._state.dialogInfo = dialogReducer(this._state.dialogInfo, action );
+            this._state.dialogInfo = dialogsReducer(this._state.dialogInfo, action );
 
             this._rerender(this._state);
         }

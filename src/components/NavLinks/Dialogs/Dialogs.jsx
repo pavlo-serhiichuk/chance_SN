@@ -4,9 +4,9 @@ import DialogItem from "./DialogComponents/DialogItem";
 
 
 const Dialogs = (props) => {
-    const messageText = props.state.messageText
-    const users = props.state.users
-    const messages = props.state.messages
+    const messageText = props.dialogsPage.messageText
+    const users = props.dialogsPage.users
+    const messages = props.dialogsPage.messages
     const allMessages = messages.map(m => {
             return <div key={m.id}>{m.message}</div>
         })

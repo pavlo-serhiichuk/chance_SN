@@ -4,8 +4,8 @@ import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
 import {Route} from "react-router-dom";
 import MyProfile from "./components/NavLinks/MyProfile/MyProfile";
-import MyFriend from "./components/NavLinks/MyFriends/MyFriends";
 import DialogsContainer from "./components/NavLinks/Dialogs/DialogsContainer";
+import UsersContainer from "./components/NavLinks/Users/UsersContainer";
 
 function App(props) {
     return (
@@ -15,7 +15,7 @@ function App(props) {
                         <Navigation/>
                         <div className={s.routers}>
                             <Route path='/profile' render={() => <MyProfile/>}/>
-                            <Route path='/myFriends' render={() => <MyFriend/>}/>
+                            <Route path='/myFriends' render={() => <UsersContainer/>}/>
                             <Route path='/dialogs' render={() => <DialogsContainer/>}/>
                         </div>
                     </div>

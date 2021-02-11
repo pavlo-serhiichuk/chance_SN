@@ -1,11 +1,12 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import profileReducer from "./profile-reducer";
-import dialogReducer from "./dialog-reducer";
+import dialogsReducer from "./dialog-reducer";
+import usersReducer from "./users_reducer";
 
 const reducers = combineReducers({
     profilePage: profileReducer,
-    dialogPage: dialogReducer,
-
+    dialogsPage: dialogsReducer,
+    usersPage: usersReducer
 })
 
 const store = createStore(reducers, {}, applyMiddleware())

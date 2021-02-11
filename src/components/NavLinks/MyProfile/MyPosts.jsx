@@ -2,7 +2,6 @@ import React from 'react'
 import s from './MyProfile.module.css'
 
 const MyPosts = props => {
-    // debugger
     const onAddPost = () => {
         props.addPost()
 
@@ -11,6 +10,7 @@ const MyPosts = props => {
     const onPostChange = (e) => {
         props.updatePostMessage(e.target.value)
     }
+
     return (
         <div className={s.myPosts}>
             <div className={s.sendInfo}>
