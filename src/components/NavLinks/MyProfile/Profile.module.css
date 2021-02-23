@@ -1,20 +1,21 @@
 .profileInfo {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
+    /*display: grid;*/
+    /*grid-template-columns: 1fr 4fr;*/
 }
 
 .info {
     background-color: #fff;
-    margin: 5px;
+    margin: -20px 5px 5px;
     border-radius: 5px;
     padding: 5px;
 }
 
 .avatar {
-    height: 80px;
-    /*border: 1px solid silver;*/
+    border-radius: 50%;
+    height: 110px;
+    width: 110px;
     padding: 5px;
-    background-color: lightblue;
+    margin-left: 33%;
 }
 
 .myPosts {

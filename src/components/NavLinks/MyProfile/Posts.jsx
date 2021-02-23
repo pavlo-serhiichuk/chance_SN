@@ -1,7 +1,7 @@
 import React from 'react'
-import s from './MyProfile.module.css'
+import s from './Profile.module.css'
 
-const MyPosts = props => {
+const Posts = props => {
     const onAddPost = () => {
         props.addPost()
 
@@ -16,6 +16,7 @@ const MyPosts = props => {
             <div className={s.sendInfo}>
                 <input type="text"
                        value={props.postText}
+                       placeholder={'Share your thoughts...'}
                        onChange={onPostChange}/>
                 <button onClick={onAddPost}
                         disabled={props.postText ? false: true}>{'+'}</button>
@@ -36,4 +37,4 @@ const Post = props => {
     )
 }
 
-export default MyPosts
+export default Posts

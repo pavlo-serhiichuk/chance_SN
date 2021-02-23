@@ -26,6 +26,7 @@ const Dialogs = (props) => {
             <div>
                 <div>
                     <input onChange={onMessageChange} type="text"
+                           placeholder={'Write your opinion...'}
                            value={messageText}/>
                     <button onClick={onAddMessage} disabled={messageText ? false: true}>Send</button>
                 </div>

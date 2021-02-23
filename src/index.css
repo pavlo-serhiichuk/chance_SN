@@ -4,3 +4,9 @@ body {
     margin: 0;
     font-family: sans-serif;
 }
+
+.preloader {
+    /*margin-left: 50%;*/
+    /*margin-right: 50%;*/
+    border: 3px solid red;
+}

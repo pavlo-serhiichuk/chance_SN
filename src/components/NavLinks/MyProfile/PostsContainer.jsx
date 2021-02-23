@@ -1,5 +1,5 @@
 import {addPostAC, updatePostMessageAC} from "../../../redux/profile-reducer";
-import MyPosts from "./MyPosts";
+import Posts from "./Posts";
 import {connect} from "react-redux";
 
 // const MyPostsContainer = () => {
@@ -14,7 +14,7 @@ import {connect} from "react-redux";
 //                 const updatePostMessage = (text) => {
 //                     store.dispatch(updatePostMessageAC(text))}
 //
-//                 return <MyPosts posts={state.posts}
+//                 return <Posts posts={state.posts}
 //                                 postText={state.postText}
 //                                 updatePostMessage={updatePostMessage}
 //                                 addPost={addPost}/>
@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+export default connect(mapStateToProps, mapDispatchToProps)(Posts)
 
 // connect - это аналог контейнера с помощью React.createContext
 // connect защищает разработчика от знания store

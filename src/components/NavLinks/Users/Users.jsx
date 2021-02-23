@@ -1,75 +1,38 @@
 import React from 'react'
 import s from './Users.module.css'
-import * as axios from "axios";
-import userPhoto from '../../../utils/images/ava.png'
-import * as PropTypes from "prop-types";
+import userPhoto from '../../../images/ava.png'
+import {NavLink} from "react-router-dom";
 
-class Users extends React.PureComponent {
+const Users = ({users, onPageChanged, toggleFollow, totalCount, pageSize, currentPage}) => {
+    let pagesCount = Math.ceil(totalCount > 20 || 50 / pageSize)
 
-    constructor(props) {
-        super(props);
-        // let {users, toggleFollow, totalCount, pageSize, currentPage} = this.props;
+    let pages = [];
+    for (let i = 0; i < pagesCount; i++) {
+        pages.push(i + 1)
     }
-
-    componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count={this.props. pageSize}`)
-            .then(response => {
-                 this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
-            })
-    }
-
-    onPageChanged = pageNumber => {
-        this.props.changePage(pageNumber)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count={this.props. pageSize}`)
-                .then(response => this.props.setUsers(response.data.items))
-    }
-
-    render() {
-        // let {users, toggleFollow, totalCount, pageSize, currentPage} = this.props;
-        // console.log("Props:", this.props)
-        let pagesCount = Math.ceil(this.props.totalCount > 20 && 50/ this.props.pageSize)
-
-        let pages = [];
-        for (let i = 0; i < pagesCount; i++) {
-            pages.push(i + 1)
-        }
-
-        console.log(pages.length)
-        return (
-            <div className={s.usersContainer}>
-                {pages.map(p => {
-                    return <span onClick={() => { this.onPageChanged(p) }}
-                        className={`${this.props.currentPage === p && s.selectedPage} ${s.paginator}`}>
-                        {p}
-                    </span>
-                })}
-                <div>
-                    {() => {
-
-                        }}
-                </div>
-                {this.props.users.map(user => {
-                    return (
-                        <div className={s.userContainer} key={user.id}>
+    return (
+        <div className={s.usersContainer}>
+            {pages.map(p => {
+                return <span className={`${currentPage === p && s.selectedPage} ${s.paginator}`}
+                             onClick={() => onPageChanged(p)}>{p}</span>
+            })}
+            {users.map(user => {
+                return (
+                    <div className={s.userContainer} key={user.id}>
+                        <NavLink to={`profile/${user.id}`}>
                             <img src={user.photos.small || userPhoto} alt=""/>
+                        </NavLink>
                             <div className={s.userInfo}>
-                                <div>{user.name}</div>
-                                <button onClick={() => this.props.toggleFollow(user.id)}>
-                                    {user.followed ? 'UnFollow' : 'Follow'}
-                                </button>
-                            </div>
-                        </div>
-                    )
-                })}
+                        <div>{user.name}</div>
+                        <button onClick={() => toggleFollow(user.id)}>
+                            {user.followed ? 'UnFollow' : 'Follow'}
+                        </button>
+                    </div>
             </div>
-        )
-    }
-}
-
-Users.propTypes = {
-    users: PropTypes.any,
-    toggleFollow: PropTypes.any
+            )
+            })}
+        </div>
+    )
 }
 
 export default Users
