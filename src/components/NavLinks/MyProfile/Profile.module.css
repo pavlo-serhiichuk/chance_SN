@@ -3,6 +3,17 @@
     /*grid-template-columns: 1fr 4fr;*/
 }
 
+.fullName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    left: 25%;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
 .info {
     background-color: #fff;
     margin: -20px 5px 5px;
@@ -15,7 +26,12 @@
     height: 110px;
     width: 110px;
     padding: 5px;
-    margin-left: 33%;
+    margin-left: 40%;
+}
+
+.contacts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .myPosts {

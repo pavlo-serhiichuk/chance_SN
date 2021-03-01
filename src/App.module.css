@@ -2,8 +2,8 @@
     margin: 0 auto;
 }
 .wrapperContent {
-    width: 500px;
-    padding-top: 50px;
+    width: 850px;
+    padding-top: 63px;
     display: grid;
     grid-template-columns: 2fr 7fr;
     grid-gap: 10px;

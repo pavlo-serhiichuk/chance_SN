@@ -48,7 +48,6 @@ class UsersContainer extends React.PureComponent {
 
 
 const mstp = (state) => {
-    console.log("totalCount", state.usersPage.totalCount)
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
