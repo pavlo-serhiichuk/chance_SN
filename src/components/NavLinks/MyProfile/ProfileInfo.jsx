@@ -11,7 +11,7 @@ const ProfileInfo = (props) => {
 
     const Contacts = () => {
         return <div className={s.contacts}>
-            {Object.entries(props.profile.contacts).map(contact => <div key={5}>{`${contact[0]}: ${contact[1]}`}</div>)}
+            {Object.entries(props.profile.contacts).map(contact => <div key={contact[0]}>{`${contact[0]}: ${contact[1]}`}</div>)}
         </div>
     }
 

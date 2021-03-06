@@ -2,9 +2,9 @@ import React from 'react'
 import s from './Users.module.css'
 import userPhoto from '../../../images/ava.png'
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
+import usersAPI from "../../../api/api";
 
-const Users = ({users, onPageChanged, toggleFollow, totalCount, pageSize, currentPage}) => {
+const Users = ({users, onPageChanged, follow, unFollow, totalCount, pageSize, currentPage}) => {
     let pagesCount = Math.ceil(totalCount > 20 || 50 / pageSize)
 
     let pages = [];
@@ -14,7 +14,7 @@ const Users = ({users, onPageChanged, toggleFollow, totalCount, pageSize, curren
     return (
         <div className={s.usersContainer}>
             {pages.map(p => {
-                return <span className={`${currentPage === p && s.selectedPage} ${s.paginator}`}
+                return <span key={Math.random()} className={`${currentPage === p && s.selectedPage} ${s.paginator}`}
                              onClick={() => onPageChanged(p)}>{p}</span>
             })}
             {users.map(user => {
@@ -25,24 +25,23 @@ const Users = ({users, onPageChanged, toggleFollow, totalCount, pageSize, curren
                         </NavLink>
                         <div className={s.userInfo}>
                             <div>{user.name}</div>
-                            <button onClick={() => {
-                                if(user.follow) {
-
-                                }
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
-                                    withCredentials: true
-                                })
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            toggleFollow(user.id)
-                                        }
-                                    })
-
-                                        debugger
-                                toggleFollow(user.id)
-                            }}>
-                                {user.followed ? 'UnFollow' : 'Follow'}
-                            </button>
+                            {user.followed
+                                ? <button onClick={() => {
+                                    usersAPI.unFollow(user.id)
+                                            .then(data => {
+                                                if (data.resultCode === 0) {
+                                                    unFollow(user.id)
+                                                }})
+                                }}>Unfollow</button>
+                                : <button onClick={() => {
+                                    usersAPI.follow(user.id)
+                                        .then(data => {
+                                                if (data.resultCode === 0) {
+                                                    follow(user.id)
+                                                }
+                                            })
+                                    }}>Follow</button>
+                            }
                         </div>
                     </div>
                 )

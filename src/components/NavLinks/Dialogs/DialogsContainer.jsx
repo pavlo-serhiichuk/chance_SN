@@ -2,28 +2,6 @@ import {sendMessageAC, updateDialogMessageAC} from "../../../redux/dialog-reduce
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
-// const DialogsContainer = () => {
-//     return (
-//         <StoreContext.Consumer>
-//             {store => {
-//                 let state = store.getState().dialogsPage
-//
-//                 const addMessage = () => {
-//                     store.dispatch(sendMessageAC())
-//                 }
-//                 const messageChange = (e) => {
-//                     store.dispatch(updateDialogMessageAC(e))
-//                 }
-//
-//                 return <Dialogs addMessage={addMessage}
-//                                 messageChange={messageChange}
-//                                 state={state}
-//                 />
-//             }}
-//         </StoreContext.Consumer>
-//     )
-// }
-
 const mapStateToProps = (state) => {
 
     return {

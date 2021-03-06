@@ -3,22 +3,22 @@ import {connect} from "react-redux";
 import {
     setPage,
     setUsers,
-    toggleFollow,
+    follow, unFollow,
     setTotalUsersCount,
     toggleIsFetching
 } from "../../../redux/users_reducer";
-import * as axios from "axios";
 import Users from "./Users";
 import BigPreloader from "../../../common/Preloader"
+import usersAPI from "../../../api/api";
 
 class UsersContainer extends React.PureComponent {
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count={this.props. pageSize}`)
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
             .then(response => {
                 this.props.toggleIsFetching(true)
-                this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.setUsers(response.items)
+                this.props.setTotalUsersCount(response.totalCount)
                 this.props.toggleIsFetching(false)
 
             })
@@ -27,8 +27,8 @@ class UsersContainer extends React.PureComponent {
     onPageChanged = pageNumber => {
         this.props.setPage(pageNumber)
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count={this.props. pageSize}`)
-            .then(response => this.props.setUsers(response.data.items))
+        usersAPI.getUsers(pageNumber, this.props.pageSize)
+            .then(response => this.props.setUsers(response.items))
         this.props.toggleIsFetching(false)
     }
 
@@ -38,7 +38,8 @@ class UsersContainer extends React.PureComponent {
                 ? <BigPreloader/>
                 : <Users onPageChanged={this.onPageChanged}
                          users={this.props.users}
-                         toggleFollow={this.props.toggleFollow}
+                         follow={this.props.follow}
+                         unFollow={this.props.unFollow}
                          pageSize={this.props.pageSize}
                          currentPage={this.props.currentPage}/>
             }
@@ -68,7 +69,7 @@ const mstp = (state) => {
 // }
 
 export default connect(mstp, {
-    toggleFollow,
+    follow, unFollow,
     setUsers, setPage,
     setTotalUsersCount,
     toggleIsFetching
