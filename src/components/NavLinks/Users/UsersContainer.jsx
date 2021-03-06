@@ -5,7 +5,7 @@ import {
     setUsers,
     follow, unFollow,
     setTotalUsersCount,
-    toggleIsFetching
+    toggleIsFetching, toggleFollowingProgress
 } from "../../../redux/users_reducer";
 import Users from "./Users";
 import BigPreloader from "../../../common/Preloader"
@@ -20,7 +20,6 @@ class UsersContainer extends React.PureComponent {
                 this.props.setUsers(response.items)
                 this.props.setTotalUsersCount(response.totalCount)
                 this.props.toggleIsFetching(false)
-
             })
     }
 
@@ -34,15 +33,18 @@ class UsersContainer extends React.PureComponent {
 
     render() {
         return <>
-            {this.props.isFetching
-                ? <BigPreloader/>
-                : <Users onPageChanged={this.onPageChanged}
+            {/*{this.props.isFetching ? <BigPreloader/> : null}*/}
+                 <Users onPageChanged={this.onPageChanged}
                          users={this.props.users}
                          follow={this.props.follow}
                          unFollow={this.props.unFollow}
                          pageSize={this.props.pageSize}
-                         currentPage={this.props.currentPage}/>
-            }
+                        isFatching={this.props.isFetching}
+                         currentPage={this.props.currentPage}
+                         followingInProgress={this.props.followingInProgress}
+                         toggleFollowingProgress={this.props.toggleFollowingProgress}
+
+                />
         </>
     }
 }
@@ -54,7 +56,8 @@ const mstp = (state) => {
         pageSize: state.usersPage.pageSize,
         totalCount: state.usersPage.totalCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress,
     }
 }
 
@@ -71,6 +74,7 @@ const mstp = (state) => {
 export default connect(mstp, {
     follow, unFollow,
     setUsers, setPage,
+    toggleFollowingProgress,
     setTotalUsersCount,
     toggleIsFetching
 })(UsersContainer)

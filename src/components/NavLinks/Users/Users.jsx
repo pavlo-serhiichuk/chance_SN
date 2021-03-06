@@ -3,8 +3,9 @@ import s from './Users.module.css'
 import userPhoto from '../../../images/ava.png'
 import {NavLink} from "react-router-dom";
 import usersAPI from "../../../api/api";
+import BigPreloader from "../../../common/Preloader";
 
-const Users = ({users, onPageChanged, follow, unFollow, totalCount, pageSize, currentPage}) => {
+const Users = ({users, onPageChanged, follow, unFollow, isFetching, totalCount, pageSize, currentPage, toggleFollowingProgress, followingInProgress}) => {
     let pagesCount = Math.ceil(totalCount > 20 || 50 / pageSize)
 
     let pages = [];
@@ -17,6 +18,7 @@ const Users = ({users, onPageChanged, follow, unFollow, totalCount, pageSize, cu
                 return <span key={Math.random()} className={`${currentPage === p && s.selectedPage} ${s.paginator}`}
                              onClick={() => onPageChanged(p)}>{p}</span>
             })}
+            {isFetching ? <BigPreloader/> : null}
             {users.map(user => {
                 return (
                     <div className={s.userContainer} key={user.id}>
@@ -26,21 +28,31 @@ const Users = ({users, onPageChanged, follow, unFollow, totalCount, pageSize, cu
                         <div className={s.userInfo}>
                             <div>{user.name}</div>
                             {user.followed
-                                ? <button onClick={() => {
+                                ? <button
+                                    disabled={followingInProgress.some(id => {
+                                    return id === user.id})
+                                }
+                                          onClick={() => {
+                                     toggleFollowingProgress(true, user.id)
                                     usersAPI.unFollow(user.id)
-                                            .then(data => {
-                                                if (data.resultCode === 0) {
-                                                    unFollow(user.id)
-                                                }})
+                                        .then(data => {
+                                            if (data.resultCode === 0) {
+                                                unFollow(user.id)
+                                            }
+                                            toggleFollowingProgress(false, user.id)
+                                        })
                                 }}>Unfollow</button>
-                                : <button onClick={() => {
+                                : <button disabled={followingInProgress.some(id => id === user.id)}
+                                          onClick={() => {
+                                    toggleFollowingProgress(true, user.id)
                                     usersAPI.follow(user.id)
                                         .then(data => {
-                                                if (data.resultCode === 0) {
-                                                    follow(user.id)
-                                                }
-                                            })
-                                    }}>Follow</button>
+                                            if (data.resultCode === 0) {
+                                                follow(user.id)
+                                            }
+                                            toggleFollowingProgress(false, user.id)
+                                        })
+                                }}>Follow</button>
                             }
                         </div>
                     </div>
