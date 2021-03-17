@@ -1,54 +1,46 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
+    unFollow, follow,
     setPage,
     setUsers,
-    follow, unFollow,
-    setTotalUsersCount,
-    toggleIsFetching, toggleFollowingProgress
+    followSuccess,
+    toggleIsFetching,
+    toggleFollowingProgress,
+    getUsersThunkCreator,
 } from "../../../redux/users_reducer";
 import Users from "./Users";
 import BigPreloader from "../../../common/Preloader"
-import usersAPI from "../../../api/api";
+import {compose} from "redux";
+import withAuthRedirect from "../../../hoc/withRedirectComponent";
 
-class UsersContainer extends React.PureComponent {
+class UsersContainer extends React.Component {
 
     componentDidMount() {
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(response => {
-                this.props.toggleIsFetching(true)
-                this.props.setUsers(response.items)
-                this.props.setTotalUsersCount(response.totalCount)
-                this.props.toggleIsFetching(false)
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = pageNumber => {
-        this.props.setPage(pageNumber)
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(response => this.props.setUsers(response.items))
-        this.props.toggleIsFetching(false)
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
 
     render() {
         return <>
-            {/*{this.props.isFetching ? <BigPreloader/> : null}*/}
-                 <Users onPageChanged={this.onPageChanged}
-                         users={this.props.users}
-                         follow={this.props.follow}
-                         unFollow={this.props.unFollow}
-                         pageSize={this.props.pageSize}
-                        isFatching={this.props.isFetching}
-                         currentPage={this.props.currentPage}
-                         followingInProgress={this.props.followingInProgress}
-                         toggleFollowingProgress={this.props.toggleFollowingProgress}
+            <Users onPageChanged={this.onPageChanged}
+                   follow={this.props.follow}
+                   unFollow={this.props.unFollow}
+                   users={this.props.users}
+                   pageSize={this.props.pageSize}
+                   isFatching={this.props.isFetching}
+                   currentPage={this.props.currentPage}
+                   followingInProgress={this.props.followingInProgress}
+                   toggleFollowingProgress={this.props.toggleFollowingProgress}
 
-                />
+            />
+            {this.props.isFetching ? <BigPreloader/> : null}
         </>
     }
 }
-
 
 const mstp = (state) => {
     return {
@@ -61,6 +53,30 @@ const mstp = (state) => {
     }
 }
 
+
+export default compose(
+    connect(mstp, {
+        follow, unFollow,
+        followSuccess,
+        setPage, setUsers,
+        toggleFollowingProgress,
+        getUsers: getUsersThunkCreator,
+        toggleIsFetching,
+    }),
+    withAuthRedirect
+)(UsersContainer)
+
+
+// connect(mstp, {
+//     follow, unFollow,
+//     followSuccess,
+//     setPage, setUsers,
+//     toggleFollowingProgress,
+//     getUsers: getUsersThunkCreator,
+//     toggleIsFetching,
+// })(UsersContainer)
+
+
 // const mdtp = (dispatch) => {
 //     return {
 //         toggleFollow: (userId, toggleFollow) => dispatch(toggleFollow(userId, toggleFollow)),
@@ -70,11 +86,3 @@ const mstp = (state) => {
 //         toggleIsFetching: isFetching => dispatch(toggleIsFetching(isFetching))
 //     }
 // }
-
-export default connect(mstp, {
-    follow, unFollow,
-    setUsers, setPage,
-    toggleFollowingProgress,
-    setTotalUsersCount,
-    toggleIsFetching
-})(UsersContainer)

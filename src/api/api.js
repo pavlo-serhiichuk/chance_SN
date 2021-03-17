@@ -1,5 +1,5 @@
 import * as axios from "axios";
-
+//axios создает Promise - ы
 //DAL уровень
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -18,6 +18,25 @@ const usersAPI = {
     unFollow(userId) {
         return instance.delete(`follow/${userId}`).then(response => response.data)
     }
+}
+
+export const authAPI =  {
+    me() {
+       return instance.get('auth/me')
+    }
+}
+
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`)
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`)
+    },
+    updateStatus(status) {
+        return instance.put(`status`, { status: status })
+    },
+
 }
 
 export default usersAPI

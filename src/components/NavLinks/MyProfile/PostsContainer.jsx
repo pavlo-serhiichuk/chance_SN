@@ -2,28 +2,6 @@ import {addPostAC, updatePostMessageAC} from "../../../redux/profile-reducer";
 import Posts from "./Posts";
 import {connect} from "react-redux";
 
-// const MyPostsContainer = () => {
-//     return (
-//         <StoreContext.Consumer>
-//             {store => {
-//                 let state = store.getState().profilePage
-//                 const addPost = () => {
-//                     store.dispatch(addPostAC())
-//                     store.dispatch(updatePostMessageAC(''))}
-//
-//                 const updatePostMessage = (text) => {
-//                     store.dispatch(updatePostMessageAC(text))}
-//
-//                 return <Posts posts={state.posts}
-//                                 postText={state.postText}
-//                                 updatePostMessage={updatePostMessage}
-//                                 addPost={addPost}/>
-//             }
-//             }
-//         </StoreContext.Consumer>
-//     )
-// }
-
 const mapStateToProps = (state) => {
     return {
         posts: state.profilePage.posts,
