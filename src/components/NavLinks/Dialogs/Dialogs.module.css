@@ -11,3 +11,14 @@ a {
     text-decoration: none;
     color: black;
 }
+
+.dialogForm {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    padding: 5px;
+    border-bottom: 1px solid silver;
+}
+
+.sendButton {
+    height: 36px;
+}

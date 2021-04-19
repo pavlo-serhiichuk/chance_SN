@@ -1,5 +1,5 @@
 import React from 'react'
-import preloader from "../images/rolling.svg";
+import preloader from "../../images/rolling.svg";
 import s from "./Preloaders.module.css";
 
 const BigPreloader = () => {

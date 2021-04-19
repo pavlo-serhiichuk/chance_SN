@@ -18,7 +18,16 @@ class ProfileContainer extends React.Component {
         this.props.getStatus(userId)
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
+    }
+
     render() {
+        console.log('render')
         return (
             <div>
                 <Profile {...this.props}

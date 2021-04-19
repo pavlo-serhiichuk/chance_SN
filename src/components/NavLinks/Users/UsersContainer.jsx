@@ -10,7 +10,7 @@ import {
     getUsersThunkCreator,
 } from "../../../redux/users_reducer";
 import Users from "./Users";
-import BigPreloader from "../../../common/Preloader"
+import BigPreloader from "../../../common/Preloader/Preloader"
 import {compose} from "redux";
 import withAuthRedirect from "../../../hoc/withRedirectComponent";
 

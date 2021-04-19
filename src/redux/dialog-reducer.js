@@ -12,22 +12,19 @@ const initialState = {
         {id: 2, message: "How are you?"},
         {id: 3, message: "I'm excellent"},
     ],
-    messageText: 'gord soboy'
+    messageText: '' // не обязательное поле
 }
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_DIALOG_MESSAGE: {
-              return {
-                ...state,
-                messageText: action.newMessageText
-            }
-        }
         case SEND_MESSAGE: {
-           return  {
+            return {
                 ...state,
-                messageText: '',
-                messages: [...state.messages, {id: Math.random(), message: state.messageText}]
+                messages: [...state.messages,
+                    {
+                        id: state.messages.length + 1,
+                        message: action.messageText
+                    }]
             }
         }
         default:
@@ -36,7 +33,6 @@ const dialogsReducer = (state = initialState, action) => {
 }
 
 
-export const sendMessageAC = () => ({type: SEND_MESSAGE})
-export const updateDialogMessageAC = (newMessageText) => ({type: UPDATE_DIALOG_MESSAGE, newMessageText})
+export const sendMessageAC = (messageText) => ({type: SEND_MESSAGE, messageText})
 
 export default dialogsReducer

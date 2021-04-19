@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Users.module.css'
 import userPhoto from '../../../images/ava.png'
 import {NavLink} from "react-router-dom";
-import BigPreloader from "../../../common/Preloader";
+import BigPreloader from "../../../common/Preloader/Preloader";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalCount > 20 || 50 / props.pageSize)

@@ -1,4 +1,4 @@
-import {sendMessageAC, updateDialogMessageAC} from "../../../redux/dialog-reducer";
+import {sendMessageAC} from "../../../redux/dialog-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import withAuthRedirect from "../../../hoc/withRedirectComponent";
@@ -8,13 +8,11 @@ const mapStateToProps = (state) => ({
         dialogsPage: state.dialogsPage,
         isAuth: state.auth.isAuth
 })
+
 const mapDispatchToProps = (dispatch) => {
     return {
-        messageChange: (body) => {
-            dispatch(updateDialogMessageAC(body))
-        },
-        addMessage: () => {
-            dispatch(sendMessageAC())
+        addMessage: (messageText) => {
+            dispatch(sendMessageAC(messageText))
         }
 
     }

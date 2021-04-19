@@ -52,9 +52,18 @@ ul{
     border-bottom: 1px solid silver;
 }
 
-.sendInfo {
+.postInfo {
     display: grid;
     grid-template-columns: 5fr 1fr;
     padding: 5px;
     border-bottom: 1px solid silver;
+}
+
+.postButton {
+    width: 37px;
+    height: 37px;
+    /*border-radius: 50%;*/
+    background-color: transparent;
+    border: 1px solid;
+    /*background-color: lightblue;*/
 }

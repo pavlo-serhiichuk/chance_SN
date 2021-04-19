@@ -1,0 +1,38 @@
+.postField {
+    position: relative;
+}
+
+textarea {
+    width: 96%;
+}
+
+.textareaField {
+    border: 1px solid red;
+}
+
+.textareaMessage {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 2px;
+    top: 31px;
+    left: 109px;
+    background-color: #ff5d24;
+    border-radius: 4px;
+    color: white;
+}
+
+.inputField {
+    border: 1px solid red;
+}
+
+.inputMessage {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 2px;
+    top: -2px;
+    left: 159px;
+    background-color: #ff5d24;
+    border-radius: 4px;
+    color: white;
+}
+
