@@ -54,7 +54,7 @@ ul{
 
 .postInfo {
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 650px 1fr;
     padding: 5px;
     border-bottom: 1px solid silver;
 }

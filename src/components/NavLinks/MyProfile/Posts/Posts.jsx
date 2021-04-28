@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import s from '../Profile.module.css'
-import {Field, reduxForm} from "redux-form";
 import PostsForm from "./PostsForm";
 
 const Post = props => {

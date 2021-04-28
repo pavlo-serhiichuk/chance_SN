@@ -25,6 +25,10 @@ font-family: sans-serif;
 
 .userInfo {
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: flex-end;
     font-family: sans-serif;
+}
+
+.userName {
+    padding: 8px;
 }

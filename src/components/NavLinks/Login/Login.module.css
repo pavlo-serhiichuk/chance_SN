@@ -6,3 +6,9 @@ pre {
     display: flex;
     flex-direction: row;
 }
+
+.summaryError {
+    background-color: #ff5d24;
+    color: #fff;
+    border-radius: 5px;
+}
