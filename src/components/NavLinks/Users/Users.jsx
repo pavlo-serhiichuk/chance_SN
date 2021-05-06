@@ -23,7 +23,7 @@ const Users = (props) => {
                 return <User user={user}
                              follow={props.follow}
                              unFollow={props.unFollow}
-                             followingInProgress={props.followingInProgress} />
+                             followingInProgress={props.followingInProgress}/>
             })}
         </div>
     )
