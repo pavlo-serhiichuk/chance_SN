@@ -3,9 +3,9 @@ import {Input} from "../../../common/FormsControles/FormsControls";
 import {maxLength, required} from "../../../common/FormsControles/validators";
 import s from './Login.module.css'
 const maxLength35 = maxLength(35)
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
          <pre>
              <label htmlFor="firstName">First Name: </label>
              <Field component={Input} validate={[required, maxLength35]}
@@ -20,7 +20,7 @@ const LoginForm = (props) => {
              <Field component={Input} validate={[required, maxLength35]}
                     name={'rememberMe'} type="checkbox"/> Remember Me
          </pre>
-            {props.error && <div className={s.summaryError}>{props.error}</div>}
+            {error && <div className={s.summaryError}>{error}</div>}
             <div>
                 <button>Log in</button>
             </div>

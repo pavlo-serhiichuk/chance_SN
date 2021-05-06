@@ -13,17 +13,21 @@ const Post = props => {
     )
 }
 
-const Posts = props => {
-    const onAddPost = (values) => {
-       props.addPost(values.postMessage)
-    }
+class Posts extends React.PureComponent {
 
-    return (
-        <div className={s.myPosts}>
-            <PostsForm onSubmit={onAddPost}/>
-            <Post posts={props.posts}/>
-        </div>
-    )
+    render() {
+        const onAddPost = (values) => {
+            this.props.addPost(values.postMessage)
+        }
+
+        console.log('Posts rerender')
+        return (
+            <div className={s.myPosts}>
+                <PostsForm onSubmit={onAddPost}/>
+                <Post posts={this.props.posts}/>
+            </div>
+        )
+    }
 }
 
 export default Posts

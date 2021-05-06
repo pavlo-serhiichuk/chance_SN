@@ -26,6 +26,7 @@ const Dialogs = (props) => {
             <div>
                 <DialogMessage {...props}   onSubmit={onAddMessage} />
                 <div>{allMessages}</div>
+                <iframe src="https://facebook.com" frameborder="0" height={'400px'} width={'400px'}></iframe>
             </div>
         </div>
     )

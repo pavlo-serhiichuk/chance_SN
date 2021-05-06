@@ -21,12 +21,9 @@ const appReducer = (state = initialState, action) => {
 
 const initializedSuccess = () => ({type: SET_INITIALIZED})
 
-export const initializeApp = () => (dispatch) => {
-   dispatch(getAuthUserData())
-   setTimeout(() => {
-            dispatch(initializedSuccess())
-
-   }, 4000)
+export const initializeApp = () => async (dispatch) => {
+    await dispatch(getAuthUserData())
+    dispatch(initializedSuccess())
 
 }
 export default appReducer

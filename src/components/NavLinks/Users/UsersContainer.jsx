@@ -13,6 +13,14 @@ import Users from "./Users";
 import BigPreloader from "../../../common/Preloader/Preloader"
 import {compose} from "redux";
 import withAuthRedirect from "../../../hoc/withRedirectComponent";
+import {
+    getAllUsers,
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalCount
+} from "../../../redux/users-selectors";
 
 class UsersContainer extends React.Component {
 
@@ -44,12 +52,12 @@ class UsersContainer extends React.Component {
 
 const mstp = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalCount: state.usersPage.totalCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress,
+        users: getAllUsers(state),
+        pageSize: getPageSize(state),
+        totalCount: getTotalCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
     }
 }
 
@@ -66,7 +74,6 @@ export default compose(
     withAuthRedirect
 )(UsersContainer)
 
-
 // connect(mstp, {
 //     follow, unFollow,
 //     followSuccess,
@@ -75,7 +82,6 @@ export default compose(
 //     getUsers: getUsersThunkCreator,
 //     toggleIsFetching,
 // })(UsersContainer)
-
 
 // const mdtp = (dispatch) => {
 //     return {

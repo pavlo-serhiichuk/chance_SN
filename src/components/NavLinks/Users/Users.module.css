@@ -17,14 +17,5 @@ img {
 .userInfo {
 
 }
-.paginator{
-    margin: 1px;
-    padding: 3px;
-    cursor: pointer;
-}
 
-.selectedPage {
-    font-weight: bold;
-    border: 1px solid black;
-}
 
