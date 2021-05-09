@@ -39,6 +39,7 @@ class UsersContainer extends React.Component {
                    unFollow={this.props.unFollow}
                    users={this.props.users}
                    pageSize={this.props.pageSize}
+                   totalCount={this.props.totalCount}
                    isFatching={this.props.isFetching}
                    currentPage={this.props.currentPage}
                    followingInProgress={this.props.followingInProgress}
