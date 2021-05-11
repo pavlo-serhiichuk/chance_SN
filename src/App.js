@@ -2,7 +2,7 @@ import React, {Suspense} from 'react'
 import s from './App.module.css'
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navigation from "./components/Navigation/Navigation";
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, withRouter} from "react-router-dom";
 import DialogsContainer from "./components/NavLinks/Dialogs/DialogsContainer";
 //import UsersContainer from "./components/NavLinks/Users/UsersContainer";
 import ProfileContainer from "./components/NavLinks/MyProfile/ProfileContainer";
@@ -49,11 +49,11 @@ let AppContainer = withRouter(connect(mstp, {initializeApp})(App))
 
 const MainApp = () => {
     return (
-        <BrowserRouter>
+        <HashRouter basename={process.env.PUBLIC_URL}>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
