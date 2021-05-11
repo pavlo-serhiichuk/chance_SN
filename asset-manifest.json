@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/chance_SN/static/css/main.611c387c.chunk.css",
-    "main.js": "/chance_SN/static/js/main.1fc39379.chunk.js",
-    "main.js.map": "/chance_SN/static/js/main.1fc39379.chunk.js.map",
+    "main.js": "/chance_SN/static/js/main.bec0c652.chunk.js",
+    "main.js.map": "/chance_SN/static/js/main.bec0c652.chunk.js.map",
     "runtime-main.js": "/chance_SN/static/js/runtime-main.91c617c8.js",
     "runtime-main.js.map": "/chance_SN/static/js/runtime-main.91c617c8.js.map",
     "static/js/2.7889333b.chunk.js": "/chance_SN/static/js/2.7889333b.chunk.js",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.91c617c8.js",
     "static/js/2.7889333b.chunk.js",
     "static/css/main.611c387c.chunk.css",
-    "static/js/main.1fc39379.chunk.js"
+    "static/js/main.bec0c652.chunk.js"
   ]
 }
