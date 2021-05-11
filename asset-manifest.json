@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/chance_SN/static/css/main.611c387c.chunk.css",
+    "main.js": "/chance_SN/static/js/main.1fc39379.chunk.js",
+    "main.js.map": "/chance_SN/static/js/main.1fc39379.chunk.js.map",
+    "runtime-main.js": "/chance_SN/static/js/runtime-main.91c617c8.js",
+    "runtime-main.js.map": "/chance_SN/static/js/runtime-main.91c617c8.js.map",
+    "static/js/2.7889333b.chunk.js": "/chance_SN/static/js/2.7889333b.chunk.js",
+    "static/js/2.7889333b.chunk.js.map": "/chance_SN/static/js/2.7889333b.chunk.js.map",
+    "static/css/3.ddc1f2b2.chunk.css": "/chance_SN/static/css/3.ddc1f2b2.chunk.css",
+    "static/js/3.bc1033c4.chunk.js": "/chance_SN/static/js/3.bc1033c4.chunk.js",
+    "static/js/3.bc1033c4.chunk.js.map": "/chance_SN/static/js/3.bc1033c4.chunk.js.map",
+    "static/js/4.420672e0.chunk.js": "/chance_SN/static/js/4.420672e0.chunk.js",
+    "static/js/4.420672e0.chunk.js.map": "/chance_SN/static/js/4.420672e0.chunk.js.map",
+    "index.html": "/chance_SN/index.html",
+    "static/css/3.ddc1f2b2.chunk.css.map": "/chance_SN/static/css/3.ddc1f2b2.chunk.css.map",
+    "static/css/main.611c387c.chunk.css.map": "/chance_SN/static/css/main.611c387c.chunk.css.map",
+    "static/js/2.7889333b.chunk.js.LICENSE.txt": "/chance_SN/static/js/2.7889333b.chunk.js.LICENSE.txt",
+    "static/media/ava.png": "/chance_SN/static/media/ava.8d7ae808.png",
+    "static/media/rolling.c02004e4.svg": "/chance_SN/static/media/rolling.c02004e4.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.91c617c8.js",
+    "static/js/2.7889333b.chunk.js",
+    "static/css/main.611c387c.chunk.css",
+    "static/js/main.1fc39379.chunk.js"
+  ]
+}
