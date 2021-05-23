@@ -4,7 +4,7 @@ import PostsForm from "./PostsForm";
 
 const Post = props => {
     return (
-        <ul>{props.posts.map(post => {
+        <ul>{props.posts && props.posts.map(post => {
             return <li className={s.postContent} key={post.id}>
                 <span>{post.message}</span>
                 <button>{post.likes}</button>
