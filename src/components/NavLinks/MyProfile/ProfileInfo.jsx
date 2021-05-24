@@ -1,41 +1,46 @@
-import React from 'react'
+import React, {useState} from 'react'
 import s from './Profile.module.css'
 import avatar from '../../../images/ava.png'
 import BigPreloader from "../../../common/Preloader/Preloader";
-import ProfileStatus from "./ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import ProfileData from "./ProfileData";
+import ProfileDataForm from "./ProfileDataForm";
 
-const ProfileInfo = (props) => {
-    if(!props.profile) {
-        return <BigPreloader />
-    }
-
-    const Contacts = () => {
-        return <div className={s.contacts}>
-            {Object.entries(props.profile.contacts).map(contact => <div key={contact[0]}>{`${contact[0]}: ${contact[1]}`}</div>)}
+const Contact = ({contactTitle, contactValue}) => {
+    if (!contactValue) return null
+    return (
+        <div>
+            <strong>{contactTitle}</strong> : {contactValue}
         </div>
+    )
+}
+
+const ProfileInfo = ({profile, savePhoto, isOwner, status, updateStatus}) => {
+    let [editMode, setEditMode] = useState(false)
+    if (!profile) {
+        return <BigPreloader/>
     }
 
     const mainPhotoSelected = e => {
-        if(e.target.files.length) {
-            props.savePhoto(e.target.files[0])
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0])
         }
     }
 
     return (
         <div className={s.profileInfo}>
-                <img className={s.avatar} src={props.profile.photos.large || avatar} alt=""/>
-            {props.isOwner && <input type='file' onChange={mainPhotoSelected}/>}
+            <img className={s.avatar} src={profile.photos.large || avatar} alt=""/>
+            {isOwner && <input type='file' onChange={mainPhotoSelected}/>}
             <div className={s.info}>
                 <div>
-                    <span className={s.fullName}>{props.profile.fullName}</span>
+                    <ProfileStatusWithHooks status={status}
+                                            updateStatus={updateStatus}/>
                 </div>
-                <div>
-                    <ProfileStatusWithHooks status={props.status}
-                                   updateStatus={props.updateStatus}/>
-                    <span>{`About Me: ${props.profile.aboutMe}`}</span>
-                </div>
-                    <Contacts />
+                {editMode
+                ? <ProfileDataForm profile={profile} goToSave={() => setEditMode(false)}/>
+                : <ProfileData profile={profile} goToEdit={() => setEditMode(true)}/>
+                }
+
             </div>
         </div>
     )
