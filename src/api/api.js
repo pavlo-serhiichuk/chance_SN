@@ -21,6 +21,9 @@ const usersAPI = {
 }
 
 export const authAPI =  {
+    getCaptchaUrl() {
+        return instance.get('security/get-captcha-url')
+    },
     me() {
        return instance.get('auth/me')
     },
@@ -51,6 +54,9 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    },
+    saveProfile(profile) {
+        return instance.put(`profile`, profile)
     }
 
 }

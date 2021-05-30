@@ -7,7 +7,7 @@ const initialState = {
     userId: null,
     email: null,
     login: null,
-    isAuth: false
+    isAuth: false,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -44,6 +44,14 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
     } else {
         let message = response.data.messages ? response.data.messages[0] : 'Common Error'
         dispatch(stopSubmit('login', {_error: message}))
+    }
+}
+
+export const getCaptchaUrl = () => async (dispatch) => {
+    let response = await authAPI.getCaptchaUrl()
+        let captchaUrl = response.data.url
+    if (response.data.resultCode === 0) {
+
     }
 }
 

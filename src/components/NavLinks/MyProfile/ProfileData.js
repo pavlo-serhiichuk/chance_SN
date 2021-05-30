@@ -8,13 +8,15 @@ const ProfileData = ({profile, goToEdit}) => {
             <div>
                 <span className={s.fullName}>{profile.fullName}</span>
             </div>
-            <span>About Me: {profile.aboutMe}</span>
+            <span><b>About Me:</b> {profile.aboutMe}</span>
+            <div>
+                <b>Professional skills: </b> {profile.lookingForAJobDescription}
+            </div>
             {Object.entries(profile.contacts).map(contact => {
 
                 if (!contact[1]) return null
-
-                return <div>
-                        <strong>{contact[0]}</strong> : {contact[1]}
+                return <div key={contact[0]}>
+                        <b>{contact[0]}:</b> {contact[1]}
                     </div>
             })}
         </div>

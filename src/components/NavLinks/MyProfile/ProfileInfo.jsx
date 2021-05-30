@@ -15,7 +15,7 @@ const Contact = ({contactTitle, contactValue}) => {
     )
 }
 
-const ProfileInfo = ({profile, savePhoto, isOwner, status, updateStatus}) => {
+const ProfileInfo = ({profile, savePhoto, isOwner, status, updateStatus, saveProfile}) => {
     let [editMode, setEditMode] = useState(false)
     if (!profile) {
         return <BigPreloader/>
@@ -25,6 +25,13 @@ const ProfileInfo = ({profile, savePhoto, isOwner, status, updateStatus}) => {
         if (e.target.files.length) {
             savePhoto(e.target.files[0])
         }
+    }
+
+    const onSubmit = (formData) => {
+        saveProfile(formData).then(() => {
+            setEditMode(false)
+        })
+        // login(formData.email, formData.password, formData.rememberMe)
     }
 
     return (
@@ -37,8 +44,12 @@ const ProfileInfo = ({profile, savePhoto, isOwner, status, updateStatus}) => {
                                             updateStatus={updateStatus}/>
                 </div>
                 {editMode
-                ? <ProfileDataForm profile={profile} goToSave={() => setEditMode(false)}/>
-                : <ProfileData profile={profile} goToEdit={() => setEditMode(true)}/>
+                    ? <ProfileDataForm initialValues={profile}
+                                       profile={profile}
+                                       goToSave={() => {
+                                       }}
+                                       onSubmit={onSubmit}/>
+                    : <ProfileData profile={profile} goToEdit={() => setEditMode(true)}/>
                 }
 
             </div>
