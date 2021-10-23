@@ -2,7 +2,7 @@ import React, {Suspense} from 'react'
 import s from './App.module.css'
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navigation from "./components/Navigation/Navigation";
-import {BrowserRouter, HashRouter, Route, withRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import DialogsContainer from "./components/NavLinks/Dialogs/DialogsContainer";
 //import UsersContainer from "./components/NavLinks/Users/UsersContainer";
 import ProfileContainer from "./components/NavLinks/MyProfile/ProfileContainer";
@@ -28,12 +28,14 @@ class App extends React.Component {
                 <div className={s.wrapperContent}>
                     <Navigation/>
                     <div className={s.routers}>
-                        <Suspense fallback={<div>Завантаження...</div>}>
-                            <Route path='/myFriends' render={() => <UsersContainer/>}/>
-                        </Suspense>
-                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                        <Route path='/login' render={() => <Login/>}/>
+                            <Route exact path='/' render={() => <Redirect to="/profile"/>}/>
+                            <Suspense fallback={<div>Завантаження...</div>}>
+                                <Route path='/myFriends' render={() => <UsersContainer/>}/>
+                            </Suspense>
+                            <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                            <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                            <Route path='/login' render={() => <Login/>}/>
+                            <Route path='*' render={() => <div>404 NOT FOUND</div>}/>
                     </div>
                 </div>
             </div>

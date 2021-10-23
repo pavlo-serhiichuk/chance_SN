@@ -3,7 +3,7 @@ import {Input} from "../../../common/FormsControles/FormsControls";
 import {maxLength, required} from "../../../common/FormsControles/validators";
 import s from './Login.module.css'
 const maxLength35 = maxLength(35)
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit}>
          <pre>
@@ -21,6 +21,9 @@ const LoginForm = ({handleSubmit, error}) => {
                     name={'rememberMe'} type="checkbox"/> Remember Me
          </pre>
             {error && <div className={s.summaryError}>{error}</div>}
+            {captchaUrl && <img src={captchaUrl} />}
+            {captchaUrl && <Field component={Input} validate={[required]}
+                                  name={'captcha'} placeholder={'Enter captcha...'}/>}
             <div>
                 <button>Log in</button>
             </div>
